@@ -1,10 +1,23 @@
+import { useEffect, useMemo } from 'react';
 import { Box, Typography, Link } from '@mui/material';
 import { useStateContext } from '../../contexts/StateContextProvider';
+import { useLocation, useNavigate } from 'react-router-dom';
+
 export default function SearchResults() {
-  const { results, loading } = useStateContext();
+  const { results, loading, getResults } = useStateContext();
+  const location = useLocation();
+
+  const searchTerm = useMemo(
+    () => location.search.split('=').at(-1),
+    [location]
+  );
+
+
+
   return (
     <Box>
-      {results?.results?.map(({ link, title, description }, index) => (
+      <h1>Search Results</h1>
+      {/* {results?.results?.map(({ link, title, description }, index) => (
         <Box
           key={index}
           sx={{
@@ -28,7 +41,7 @@ export default function SearchResults() {
           </Link>
           <Typography variant='body2'>{description}</Typography>
         </Box>
-      ))}
+      ))} */}
     </Box>
   );
 }

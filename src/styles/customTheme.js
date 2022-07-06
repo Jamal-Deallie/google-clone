@@ -8,16 +8,19 @@ const primaryColor = '#FCF4EC';
 const warningColor = '#DC756C';
 const successColor = '#56C090';
 
+// #202124
 export const darkTheme = createTheme({
   palette: {
     primary: {
       main: '#1c1c1c',
-      dark: '#000000',
+      dark: '#202124',
       light: '#434343',
+      medium: '#202124',
     },
     secondary: {
-      main: '#1c1c1c',
-      dark: '#000000',
+      main: '#e8eaed',
+      dark: '#9aa0a6',
+      medium: '#e8eaed',
       light: '#434343',
     },
     warning: {
@@ -26,37 +29,50 @@ export const darkTheme = createTheme({
     success: {
       main: successColor,
     },
-  },
-  background: {
-    default: 'linear-gradient(315deg, #f6f6f6 0%, #e9e9e9 74%)',
-  },
-  typography: {
-    fontFamily: ["'balboa, sans-serif', 'open-sans, sans-serif'"].join(','),
-    h1: {
-      fontFamily: 'balboa, sans-serif',
-      fontSize: '5.4rem',
-      textTransform: 'uppercase',
+    tertiary: {
+      main: '#8ab4f8',
     },
+  },
+  // background: {
+  //   default: '#000000',
+  // },
+
+  typography: {
     body1: {
       fontSize: '2rem',
       fontFamily: 'Roboto,arial,sans-serif',
-      color: '#1c1c1c',
+      color: '#e8eaed',
     },
     body2: {
-      fontSize: '1.4rem',
+      fontSize: '2.4rem',
       fontFamily: 'Roboto,arial,sans-serif',
-      color: '#1c1c1c',
+      color: '#e8eaed',
     },
+
   },
   components: {
     MuiButton: {
-      fontSize: '1.6rem',
-      fontFamily: ['open-sans,sans-serif'],
-    },
-    defaultProps: {
-      disableElevation: true,
-      disableFocusRipple: true,
-      disableRipple: true,
+      variants: [
+        {
+          props: { variant: 'bold' },
+          style: {
+            color: '#202124',
+            background: '#8ab4f8',
+            padding: '9px 15px',
+            maxWidth: '120px',
+            width: '100%',
+            border: '1px solid transparent',
+            fontWeight: 500,
+            letterSpacing: '0.25px',
+            fontSize: '1.8rem',
+          },
+        },
+      ],
+      defaultProps: {
+        disableElevation: true,
+        disableFocusRipple: true,
+        disableRipple: true,
+      },
     },
   },
 });
@@ -69,9 +85,12 @@ export const lightTheme = createTheme({
       light: '#434343',
     },
     secondary: {
-      main: '#1c1c1c',
+      main: '#000000',
       dark: '#000000',
       light: '#434343',
+    },
+    tertiary: {
+      main: '#1a73e8',
     },
     warning: {
       main: warningColor,
@@ -81,15 +100,9 @@ export const lightTheme = createTheme({
     },
   },
   background: {
-    default: 'linear-gradient(315deg, #f6f6f6 0%, #e9e9e9 74%)',
+    default: '#000000',
   },
   typography: {
-    fontFamily: ["'balboa, sans-serif', 'open-sans, sans-serif'"].join(','),
-    h1: {
-      fontFamily: 'balboa, sans-serif',
-      fontSize: '5.4rem',
-      textTransform: 'uppercase',
-    },
     body1: {
       fontSize: '2rem',
       fontFamily: 'Roboto,arial,sans-serif',

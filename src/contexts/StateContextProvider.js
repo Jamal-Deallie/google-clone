@@ -2,7 +2,7 @@ import React, { createContext, useContext, useState } from 'react';
 import axios from 'axios';
 
 const StateContext = createContext();
-const baseUrl = 'https://google-search3.p.rapidapi.com/api/v1';
+
 
 export default function StateContextProvider({ children }) {
   const [results, setResults] = useState([]);
@@ -11,18 +11,18 @@ export default function StateContextProvider({ children }) {
 
   const getResults = async url => {
     setLoading(true);
-
+    console.log(url);
     const options = {
       method: 'GET',
       url: `https://google-search3.p.rapidapi.com/api/v1${url}`,
       headers: {
         'X-User-Agent': 'desktop',
         'X-Proxy-Location': 'US',
-        'X-RapidAPI-Key': process.env.REACT_APP_GOOGLE_API_KEY,
+        // 'X-RapidAPI-Key': process.env.REACT_APP_GOOGLE_API_KEY,
         'X-RapidAPI-Host': 'google-search3.p.rapidapi.com',
       },
     };
-    axios
+    await axios
       .request(options)
       .then(function (response) {
         console.log(response);

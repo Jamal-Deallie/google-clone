@@ -1,62 +1,79 @@
-import { useEffect, useState } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useEffect, useMemo } from 'react';
+import { useLocation, Outlet } from 'react-router-dom';
 import { useStateContext } from '../../contexts/StateContextProvider';
+import { CustomAppBar } from '../../components';
+import { Box } from '@mui/material';
 import {
-  CustomLoader,
-  VideoResults,
-  NewsResults,
-  ImagesResults,
-  SearchResults,
-} from '../../components';
-import ReactPlayer from 'react-player';
-import { Box, Typography, Link, Tab, Tabs } from '@mui/material';
+  LinkContainer,
+  ResultsHeader,
+  InnerContainer,
+  NavOption,
+} from './styles';
 
 export default function ResultsContainer() {
   const { results, loading, getResults } = useStateContext();
-  const searchTerm = 'elon+musk';
   const location = useLocation();
-  const pathname = '/search';
+  const searchTerm = useMemo(
+    () => location.search.split('=').at(-1),
+    [location]
+  );
+
+  console.log(searchTerm);
 
   useEffect(() => {
-    if (searchTerm !== '') {
-      if (pathname === '/search') {
-        getResults(`/search/q=${searchTerm}&num=100`);
+    let canSearch = Boolean(searchTerm);
+    if (canSearch) {
+      if (location.pathname === '/search') {
+        getResults(`/search/q=${searchTerm}&num=40`);
+      }
+      if (location.pathname === '/image') {
+        getResults(`/image/q=${searchTerm}&num=40`);
+      }
+      if (location.pathname === '/news') {
+        getResults(`/news/q=${searchTerm}&num=40`);
+      }
+      if (location.pathname === '/news') {
+        getResults(`/video/q=${searchTerm}&num=40`);
       }
     }
-  }, [searchTerm, pathname]);
+  }, []);
 
   console.log(results);
-  const [index, setIndex] = useState(0);
-  const onTabClicked = (event, index) => {
-    setIndex(index);
-  };
-  const Panel = props => (
-    <div hidden={props.value !== props.index}>
-      <div>{props.children}</div>
-    </div>
-  );
+  console.log(loading);
+
   return (
     <Box>
-      <Box>
-        <Tabs value={index} onChange={onTabClicked}>
-          <Tab label='All' />
-          <Tab label='News' />
-          <Tab label='Images' />
-          <Tab label='Videos' />
-        </Tabs>
-      </Box>
-      <Panel value={index} index={0}>
-        <SearchResults />
-      </Panel>
-      <Panel value={index} index={1}>
-        <NewsResults />
-      </Panel>
-      <Panel value={index} index={2}>
-        <ImagesResults />
-      </Panel>
-      <Panel value={index} index={3}>
-        <VideoResults />
-      </Panel>
+      <ResultsHeader>
+        <InnerContainer>
+          <CustomAppBar />
+          <LinkContainer>
+            <NavOption
+              to={`/search?term=${searchTerm}}`}
+              $url='url(images/icons/active-search.svg)'>
+              All
+            </NavOption>
+
+            <NavOption
+              to={`/image?term=${searchTerm}`}
+              $url='url(images/icons/active-images.svg)'>
+              Images
+            </NavOption>
+            <NavOption
+              to={`/news?term=${searchTerm}`}
+              $url='url(images/icons/active-news.svg)'>
+              News
+            </NavOption>
+
+            {/* <Icon src='images/icons/google_search.svg' alt='' /> */}
+            <NavOption
+              to={`/videos?term=${searchTerm}`}
+              $url='url(images/icons/active-videos.svg)'>
+              Video
+            </NavOption>
+          </LinkContainer>
+        </InnerContainer>
+      </ResultsHeader>
+      <Outlet />
     </Box>
   );
 }
