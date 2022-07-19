@@ -5,7 +5,6 @@ import {
   CustomRadio,
   Icon,
 } from './styles';
-
 import {
   IconButton,
   Typography,
@@ -20,15 +19,15 @@ import {
   FormControl,
   FormControlLabel,
 } from '@mui/material';
-
 import { OpenInNew, Close, AnnouncementOutlined } from '@mui/icons-material';
+import { ThemeToggle } from '../../components';
 
-export default function Menu() {
+export default function Menu({ handleMenu }) {
   return (
     <MenuContainer sx={{ bgcolor: 'primary.medium' }}>
       <HeaderContainer>
         <Typography variant='body2'>Quick Settings</Typography>
-        <IconButton>
+        <IconButton onClick={handleMenu}>
           <Close sx={{ fontSize: 42, color: 'secondary.medium' }} />
         </IconButton>
       </HeaderContainer>
@@ -104,29 +103,7 @@ export default function Menu() {
                       justifyContent: 'space-between',
                       alignItems: 'center',
                     }}>
-                    <FormControlLabel
-                      value='lightTheme'
-                      control={<CustomRadio />}
-                      label='Light theme'
-                    />
-                    <ListItemIcon>
-                      <Icon src='images/icons/light.png' alt='light' />
-                    </ListItemIcon>
-                  </ListItem>
-                  <ListItem
-                    sx={{
-                      display: 'flex',
-                      justifyContent: 'space-between',
-                      alignItems: 'center',
-                    }}>
-                    <FormControlLabel
-                      value='darkTheme'
-                      control={<CustomRadio />}
-                      label='Dark theme'
-                    />
-                    <ListItemIcon>
-                      <Icon src='images/icons/dark.png' alt='Dark Theme' />
-                    </ListItemIcon>
+                    <ThemeToggle />
                   </ListItem>
                 </RadioGroup>
               </FormControl>

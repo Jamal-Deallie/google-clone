@@ -7,4 +7,5 @@ export { default as VideoResults } from './VideoResults';
 export { default as SearchResults } from './SearchResults';
 export { default as CustomAppBar } from './AppBar';
 export { default as Menu } from './Menu';
+export { default as ThemeToggle } from './ThemeToggle';
 

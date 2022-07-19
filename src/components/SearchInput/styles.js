@@ -1,6 +1,5 @@
 import { styled } from '@mui/material/styles';
-import { Box, InputBase } from '@mui/material';
-
+import { Box, InputBase, } from '@mui/material';
 
 export const SearchBarSection = styled('div')(({ theme }) => ({
   width: '100%',
@@ -11,11 +10,11 @@ export const Search = styled('div')(({ theme }) => ({
   position: 'relative',
   display: 'flex',
   backgroundColor: 'transparent',
-
+  boxShadow: 'rgba(0, 0, 0, 0.2) 0px 4px 12px',
   '&:hover': {
     backgroundColor: 'transparent',
   },
-  border: `1px solid #DFE1E5`,
+  // border: `1px solid ${theme.palette.secondary.main}`,
   alignItems: 'center',
   borderRadius: '30px',
   marginLeft: 0,
@@ -32,14 +31,14 @@ export const SearchIconWrapper = styled('div')(({ theme }) => ({
 }));
 
 export const StyledInputBase = styled(InputBase)(({ theme }) => ({
-  color: '#FFFFFF',
+  color: theme.palette.secondary.main,
   width: '100%',
   '& .MuiInputBase-input': {
     padding: theme.spacing(1, 1, 1, 0),
     paddingLeft: `calc(.5em + ${theme.spacing(1)})`,
     backgroundColor: 'transparent',
     fontSize: '1.8rem',
-    color: '#FFFFFF',
+    color: theme.palette.secondary.main,
   },
 }));
 

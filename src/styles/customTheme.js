@@ -7,7 +7,9 @@ const primaryColor = '#FCF4EC';
 
 const warningColor = '#DC756C';
 const successColor = '#56C090';
+const tertiaryColor = '#8ab4f8';
 
+const tertiaryDark = '#1a73e8';
 // #202124
 export const darkTheme = createTheme({
   palette: {
@@ -30,7 +32,7 @@ export const darkTheme = createTheme({
       main: successColor,
     },
     tertiary: {
-      main: '#8ab4f8',
+      main: tertiaryColor,
     },
   },
   // background: {
@@ -48,23 +50,39 @@ export const darkTheme = createTheme({
       fontFamily: 'Roboto,arial,sans-serif',
       color: '#e8eaed',
     },
-
   },
   components: {
     MuiButton: {
+      // variants: [
+      //   {
+      //     props: { variant: 'bold' },
+      //     style: {
+      //       color: '#202124',
+      //       background: '#8ab4f8',
+      //       padding: '9px 15px',
+      //       maxWidth: '120px',
+      //       width: '100%',
+      //       border: '1px solid transparent',
+      //       fontWeight: 500,
+      //       letterSpacing: '0.25px',
+      //       fontSize: '1.8rem',
+      //     },
+      //   },
+      // ],
       variants: [
         {
           props: { variant: 'bold' },
           style: {
-            color: '#202124',
-            background: '#8ab4f8',
-            padding: '9px 15px',
-            maxWidth: '120px',
-            width: '100%',
-            border: '1px solid transparent',
-            fontWeight: 500,
-            letterSpacing: '0.25px',
+            color: '#ffffff',
+            display: 'inline-block',
+            background: '#303134',
+            border: '1px solid #303134',
+            textTransform: 'capitalize',
+            fontFamily: 'Roboto, arial, sans-serif;',
+            borderRadius: '4px',
+            height: '56px',
             fontSize: '1.8rem',
+            padding: '0 2rem',
           },
         },
       ],
@@ -80,8 +98,8 @@ export const darkTheme = createTheme({
 export const lightTheme = createTheme({
   palette: {
     primary: {
-      main: '#1c1c1c',
-      dark: '#000000',
+      main: '#FFFFFF',
+      dark: '#f8f9fa',
       light: '#434343',
     },
     secondary: {
@@ -90,7 +108,8 @@ export const lightTheme = createTheme({
       light: '#434343',
     },
     tertiary: {
-      main: '#1a73e8',
+      main: tertiaryDark,
+      dark: tertiaryColor,
     },
     warning: {
       main: warningColor,
@@ -111,17 +130,56 @@ export const lightTheme = createTheme({
     body2: {
       fontSize: '1.4',
       fontFamily: 'Roboto,arial,sans-serif',
+      color: '#1c1c1c',
+    },
+    body3: {
+      color: '#1c1c1c',
+      fontSize: '1.8rem',
+      fontWeight: 400,
     },
   },
   components: {
     MuiButton: {
-      fontSize: '1.6rem',
-      fontFamily: ['open-sans,sans-serif'],
-    },
-    defaultProps: {
-      disableElevation: true,
-      disableFocusRipple: true,
-      disableRipple: true,
+      variants: [
+        {
+          props: { variant: 'bold' },
+          style: {
+            color: '#202124',
+            background: tertiaryDark,
+            padding: '9px 15px',
+            maxWidth: '120px',
+            width: '100%',
+            border: '1px solid transparent',
+            fontWeight: 500,
+            letterSpacing: '0.25px',
+            fontSize: '1.8rem',
+            '&:hover': {
+              background: tertiaryColor,
+            },
+          },
+        },
+
+        {
+          props: { variant: 'secondary' },
+          style: {
+            color: secondaryColor,
+            display: 'inline-block',
+            background: '#f8f9fa',
+            border: '1px solid #f8f9fa',
+            textTransform: 'capitalize',
+            fontFamily: 'Roboto, arial, sans-serif;',
+            borderRadius: '4px',
+            height: '56px',
+            fontSize: '1.8rem',
+            padding: '0 2rem',
+          },
+        },
+      ],
+      defaultProps: {
+        disableElevation: true,
+        disableFocusRipple: true,
+        disableRipple: true,
+      },
     },
   },
 });

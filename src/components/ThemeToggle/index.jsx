@@ -1,30 +1,25 @@
-import React, { useState } from 'react';
-
-import { useSelector, useDispatch } from 'react-redux';
+import { useContext } from 'react';
 import { toggleTheme } from '../../features/themeSlice';
-import Brightness4Icon from '@mui/icons-material/Brightness4';
-import Brightness7Icon from '@mui/icons-material/Brightness7';
-import IconButton from '@mui/material/IconButton';
-import { Box } from '@mui/material';
+import { FormControlLabel } from '@mui/material';
+import { ThemeContext } from '../../contexts/ThemeContextProvider';
+import { MaterialUISwitch } from './styles';
 
 export default function ThemeToggle() {
-  const theme = useSelector(state => state.theme);
-  const dispatch = useDispatch();
-
-  const toggle = () => {
-    dispatch(toggleTheme());
-  };
+  const { darkMode, setDarkMode } = useContext(ThemeContext);
+  console.log(darkMode);
+  const handleChange = event => {};
 
   return (
-    <Box
-      style={{
-        position: 'absolute',
-        top: '10px',
-        right: '10px',
-      }}>
-      <IconButton onClick={toggle}>
-        {theme.darkTheme ? <Brightness7Icon /> : <Brightness4Icon />}
-      </IconButton>
-    </Box>
+    <FormControlLabel
+      control={
+        <MaterialUISwitch
+          sx={{ m: 1 }}
+          checked={null}
+          onChange={handleChange}
+          inputProps={{ 'aria-label': 'controlled' }}
+        />
+      }
+      label='MUI switch'
+    />
   );
 }

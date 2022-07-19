@@ -1,6 +1,5 @@
 import { styled } from '@mui/material/styles';
-import { Box } from '@mui/material';
-
+import { Box, Tooltip } from '@mui/material';
 
 export const Logo = styled('img')({
   height: 'auto',
@@ -25,7 +24,7 @@ export const InputWrapper = styled(Box)({
 });
 
 export const NavBar = styled(Box)(({ theme }) => ({
-  background: theme.palette.primary.dark,
+  background: theme.palette.primary.main,
   padding: '3rem 0 2rem',
   width: '100%',
   display: 'flex',
@@ -43,4 +42,15 @@ export const OptionsContainer = styled(Box)({
   justifyContent: 'space-around',
   minWidth: '35rem',
   gap: '3rem',
+});
+
+export const CustomTooltip = styled(({ className, ...props }) => (
+  <Tooltip {...props} classes={{ popper: className }} />
+))({
+  [`& .MuiTooltip-tooltip`]: {
+    padding: 5,
+    fontSize: '1rem',
+    fontWeight: 400,
+    fontFamily: 'open-sans, sans-serif',
+  },
 });

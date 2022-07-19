@@ -1,6 +1,6 @@
-import { useState} from 'react';
+import { useState } from 'react';
 import SearchIcon from '@mui/icons-material/Search';
-import { useNavigate,  useLocation } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import {
   SearchBarSection,
   Search,
@@ -10,6 +10,7 @@ import {
   ButtonContainer,
   CustomButton,
 } from './styles';
+import { Button } from '@mui/material';
 
 export default function SearchInput({ display }) {
   const [searchTerm, setSearchTerm] = useState('');
@@ -39,7 +40,7 @@ export default function SearchInput({ display }) {
       <Form onSubmit={handleSubmit} type='POST'>
         <Search>
           <SearchIconWrapper>
-            <SearchIcon sx={{ fontSize: 33, color: '#f1f1f1' }} />
+            <SearchIcon sx={{ fontSize: 33, color: 'tertiary.main' }} />
           </SearchIconWrapper>
           <StyledInputBase
             placeholder='Search Google'
@@ -49,8 +50,8 @@ export default function SearchInput({ display }) {
         </Search>
 
         <ButtonContainer $display={display}>
-          <CustomButton>Google Search</CustomButton>
-          <CustomButton>I'm Feeling Lucky</CustomButton>
+          <Button variant='secondary'>Google Search</Button>
+          <Button variant='secondary'>I'm Feeling Lucky</Button>
         </ButtonContainer>
       </Form>
     </SearchBarSection>

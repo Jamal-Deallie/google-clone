@@ -15,9 +15,9 @@ root.render(
   <StateContextProvider>
     <ThemeContextProvider>
       <CssBaseline />
-      <React.StrictMode>
+      {/* <React.StrictMode> */}
         <App />
-      </React.StrictMode>
+      {/* </React.StrictMode> */}
     </ThemeContextProvider>
   </StateContextProvider>
 );

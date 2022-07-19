@@ -3,7 +3,6 @@ import axios from 'axios';
 
 const StateContext = createContext();
 
-
 export default function StateContextProvider({ children }) {
   const [results, setResults] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -14,12 +13,12 @@ export default function StateContextProvider({ children }) {
     console.log(url);
     const options = {
       method: 'GET',
-      url: `https://google-search3.p.rapidapi.com/api/v1${url}`,
+      url: `https://google-search3.p.rapidapi.com/api/v1${url}&num=40`,
       headers: {
         'X-User-Agent': 'desktop',
         'X-Proxy-Location': 'US',
-        // 'X-RapidAPI-Key': process.env.REACT_APP_GOOGLE_API_KEY,
-        'X-RapidAPI-Host': 'google-search3.p.rapidapi.com',
+        'x-rapidapi-host': 'google-search3.p.rapidapi.com',
+        // 'x-rapidapi-key': process.env.REACT_APP_API_KEY,
       },
     };
     await axios

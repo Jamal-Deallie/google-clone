@@ -12,12 +12,9 @@ export default function SearchResults() {
     [location]
   );
 
-
-
   return (
     <Box>
-      <h1>Search Results</h1>
-      {/* {results?.results?.map(({ link, title, description }, index) => (
+      {results?.results?.map(({ link, title, description }, index) => (
         <Box
           key={index}
           sx={{
@@ -37,11 +34,18 @@ export default function SearchResults() {
             rel='noreferrer'
             underline='hover'
             sx={{ my: '15px' }}>
-            <Typography sx={{ fontSize: '2rem' }}>{title}</Typography>
+            <Typography
+              sx={{
+                fontSize: '2rem',
+                color: 'tertiary.main',
+                fontWeight: 500,
+              }}>
+              {title}
+            </Typography>
           </Link>
           <Typography variant='body2'>{description}</Typography>
         </Box>
-      ))} */}
+      ))}
     </Box>
   );
 }

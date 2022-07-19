@@ -16,9 +16,9 @@ export const NavOption = styled(NavLink, {
   color: theme.palette.secondary.dark,
   paddingBottom: '.5rem',
   '&.active': {
-    borderBottom: '3px solid #8ab4f8',
+    borderBottom: `3px solid ${theme.palette.tertiary.main}`,
     width: 'calc(auto -2rem)',
-    color: '#8ab4f8',
+    color: theme.palette.tertiary.main,
   },
   '&::before': {
     content: $url ? $url : 'url(images/icons/google_search.svg)',
@@ -34,9 +34,7 @@ export const LinkContainer = styled(Box)(({ theme }) => ({
 }));
 
 export const ResultsHeader = styled(Box)(({ theme }) => ({
-  background: theme.palette.primary.dark,
+  background: theme.palette.primary.main,
   paddingBottom: '2rem',
   borderBottom: `1px solid ${theme.palette.secondary.main}`,
 }));
-
-
